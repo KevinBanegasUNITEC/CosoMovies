@@ -11,7 +11,7 @@ const {favoritesModel} = require('../models');
  */
 const getItems = async (req,res) => {
     const data = await favoritesModel.find({});
-    res.send({data});
+    res.send('TepisanKevin');
 };
 
 /**

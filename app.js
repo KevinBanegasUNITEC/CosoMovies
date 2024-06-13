@@ -10,6 +10,7 @@ const genres = require('./utils/genres'); //works
 const popular = require('./utils/popular'); //works
 const search = require('./utils/searchMovie'); //works
 const app = express();
+const router = express.Router();
 
 app.use(cors());
 app.use(express.json());
@@ -24,5 +25,3 @@ app.listen(port, ()=> {
 });
 
 dbconnect();
-
-upcoming(1);
