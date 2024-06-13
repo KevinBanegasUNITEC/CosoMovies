@@ -1,19 +1,15 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const axios = require('axios');
 const dbconnect = require('./config/mongo');
-const topRated = require('./utils/topRated'); //works
-const upcoming = require('./utils/upcoming'); //works
-const nowPlaying = require('./utils/nowPlaying'); //works
-const genres = require('./utils/genres'); //works
-const popular = require('./utils/popular'); //works
-const search = require('./utils/searchMovie'); //works
 const app = express();
-const router = express.Router();
+const bodyParser = require('body-parser');
 
+app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
+
+
 
 const port = process.env.PORT || 3000;
 
