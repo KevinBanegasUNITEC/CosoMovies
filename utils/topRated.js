@@ -3,6 +3,11 @@ require('dotenv').config();
 
 const API_TOKEN = process.env.API_TOKEN;
 
+/**
+ * @description Trae las peliculas mejor valoradas
+ * @param {*} page 
+ * @returns 
+ */
 async function topRatedMovies(page){
     const response = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page}&api_key=${API_TOKEN}`)
         .then(response => {

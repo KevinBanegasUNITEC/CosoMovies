@@ -1,7 +1,11 @@
 const {favoritesModel} = require('../models');
 
 /**
- * Traer Favorites
+ * @description Controlador de Favorites
+ */
+
+/**
+ * @description Traer Favorites
  * @param {*} req 
  * @param {*} res 
  */
@@ -11,28 +15,28 @@ const getItems = async (req,res) => {
 };
 
 /**
- * Agregar un item a Favorites
+ * @description Agregar un item a Favorites
  * @param {*} req
  * @param {*} res
  */
 const postItem = (req,res) => {};
 
 /**
- * Eliminar un item de Favorites
+ * @description Eliminar un item de Favorites
  * @param {*} req
  * @param {*} res
  */
 const deleteItem = (req,res) => {};
 
 /**
- * Actualizar un item de Favorites
+ * @description Actualizar un item de Favorites
  * @param {*} req
  * @param {*} res
  */
 const updateItem = (req,res) => {};
 
 /**
- * Crear un item en Favorites
+ * @description Crear un item en Favorites
  * @param {*} req
  * @param {*} res
  */

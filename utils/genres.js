@@ -3,6 +3,10 @@ require('dotenv').config();
 
 const API_TOKEN = process.env.API_TOKEN;
 
+/**
+ * @description Trae los generos de las peliculas
+ * @returns 
+ */
 async function genres(){
     const response = await axios.get(`https://api.themoviedb.org/3/genre/movie/list?language=en-US&api_key=${API_TOKEN}`)
         .then(response => {
