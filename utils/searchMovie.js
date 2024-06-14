@@ -11,7 +11,7 @@ const API_TOKEN = process.env.API_TOKEN;
  */
 async function searchMovie (query, page){
     let data;
-    await axios.get(`https://api.themoviedb.org/3/search/movie?language=en-US&query=${query}&page=1&api_key=${API_TOKEN}`)
+    await axios.get(`https://api.themoviedb.org/3/search/movie?language=en-US&query=${query}&page=${page}&api_key=${API_TOKEN}`)
         .then(response => {
             //console.log(response.data);
             data = response.data;
@@ -19,7 +19,7 @@ async function searchMovie (query, page){
         .catch(error => {
             console.error(error);
         });
-    return data;
+    return data.results;
 }
 
 module.exports = searchMovie;
