@@ -9,21 +9,23 @@ const API_TOKEN = process.env.API_TOKEN;
  * @returns 
  */
 async function getActors(id){
-    let actors = [];
-    let plays = [];
+    let cast = [];
     await axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?language=en-US&api_key=${API_TOKEN}`)
         .then(response => {
-            let cast = response.data.cast;
-            for (let i = 0; i < cast.length; i++) {
-                actors.push(cast[i].name);
-                plays.push(cast[i].character);
+            for (let i = 0; i < response.data.cast.length; i++) {
+                const actor = {
+                    name: response.data.cast[i].name,
+                    character: response.data.cast[i].character,
+                    profile_path: response.data.cast[i].profile_path
+                }
+                cast.push(actor);
             } 
         })
         .catch(error => {
             console.error(error);
         });
-    console.log(actors,plays);
-    return {actors,plays};
+    console.log(cast);
+    return cast;
 };
 
 module.exports = getActors;

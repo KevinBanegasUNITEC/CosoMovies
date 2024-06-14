@@ -5,7 +5,8 @@ const topRated = require('../utils/topRated');
 const upcoming = require('../utils/upcoming');
 const search = require('../utils/searchMovie');
 const searchID = require('../utils/searchById');
-const { favoritesModel } = require('../models')
+const { favoritesModel } = require('../models');
+const getactors = require('../utils/getActors');
 
 const getGenres = async (req,res) => {
     try {
@@ -68,7 +69,7 @@ async function getData(datas){
         const data = {
             id: movie.id,
             title: movie.title,
-            //poster_path: movie.poster_path,
+            poster_path: movie.poster_path,
         };
         tempData.push(data);
     }
@@ -88,7 +89,7 @@ const getSearchMovie = async (req,res) => {
                 id: movie.id,
                 title: movie.title,
                 release_date: movie.release_date,
-                // poster_path: movie.poster_path,
+                poster_path: movie.poster_path,
                 runtime: movie.runtime,
                 genres: movie.genres
             };
@@ -114,19 +115,19 @@ const getSearchMovieByID = async (req, res) => {
             return res.status(404).send({ error: "Movie not found" });
         const favorite = await favoritesModel.findOne({ user: user, favorites: id });
         favorite ? movie.favorite = true : movie.favorite = false;
+        const actors = await getactors(movie.id);
         const data = {
             id: movie.id,
             title: movie.title,
             release_date: movie.release_date,
-            // poster_path: movie.poster_path,
+            poster_path: movie.poster_path,
             runtime: movie.runtime,
             overview: movie.overview,
             genres: movie.genres,
             country: movie.origin_country,
             score: Math.floor(movie.vote_average * 10),
-            favorite: movie.favorite
-            //poster_path: movie.poster_path
-            //actors: movie.actors
+            favorite: movie.favorite,
+            actors: actors
         };
         res.status(200).send(data);
     } catch (error) {

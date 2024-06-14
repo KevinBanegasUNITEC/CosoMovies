@@ -30,7 +30,7 @@ const getItems = async (req,res) => {
                     id: movie.id,
                     title: movie.title,
                     release_date: movie.release_date,
-                    // poster_path: movie.poster_path,
+                    poster_path: movie.poster_path,
                     runtime: movie.runtime,
                     genres: movie.genres
                 };
@@ -84,8 +84,8 @@ const deleteItem = (req,res) => {
     const user = req.body.user;
     favoritesModel.findOneAndUpdate(
         { user: user },
-        { $pull: { favorites: id } },  // $pull elimina el elemento de la lista
-        { new: true }  // new: true devuelve el documento actualizado
+        { $pull: { favorites: id } },  
+        { new: true }
     )
         .then(data => {
             if (!data) {
