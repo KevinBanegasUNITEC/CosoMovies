@@ -5,8 +5,7 @@ const mongoose = require('mongoose');
  */
 const favoritesSchema = new mongoose.Schema(
     {
-        idMovie: { type: Number, required: true },
-        userId: { type: Number, required: true },
+        favorites: { type: Array, required: true },
     },
     { 
         versionKey: false 

@@ -1,4 +1,5 @@
-const {favoritesModel} = require('../models');
+const { favoritesModel } = require('../models')
+const searchMovie = require('../utils/searchMovie')
 
 /**
  * @description Controlador de Favorites
@@ -10,8 +11,9 @@ const {favoritesModel} = require('../models');
  * @param {*} res 
  */
 const getItems = async (req,res) => {
-    const data = await favoritesModel.find({});
-    res.send({data});
+    const data = await favoritesModel.findOne({user : req.body.user});
+    
+    res.status(200).send(data.favorites);
 };
 
 /**
