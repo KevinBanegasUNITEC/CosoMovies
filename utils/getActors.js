@@ -24,7 +24,6 @@ async function getActors(id){
         .catch(error => {
             console.error(error);
         });
-    console.log(cast);
     return cast;
 };
 
