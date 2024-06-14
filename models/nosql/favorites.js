@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
  */
 const favoritesSchema = new mongoose.Schema(
     {
-        user: { type: String, required: true },
         favorites: { type: Array, required: true },
     },
     { 

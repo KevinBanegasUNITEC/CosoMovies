@@ -3,13 +3,12 @@ const express = require('express');
 const cors = require('cors');
 const dbconnect = require('./config/mongo');
 const app = express();
-const bodyParser = require('body-parser');
+const movie = require('./utils/searchMovieByID')
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
-
-
 
 const port = process.env.PORT || 3000;
 
