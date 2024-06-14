@@ -9,14 +9,16 @@ const API_TOKEN = process.env.API_TOKEN;
  * @returns 
  */
 async function topRatedMovies(page){
-    const response = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page}&api_key=${API_TOKEN}`)
+    let data;
+    await axios.get(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=${page}&api_key=${API_TOKEN}`)
         .then(response => {
-            console.log(response.data);
+            //console.log(response.data);
+            data = response.data;
         })
         .catch(error => {
             console.error(error);
         });
-    return response.data;
+    return data;
 };
 
 module.exports = topRatedMovies;
