@@ -1,3 +1,4 @@
+const { connection } = require('../config/mongo');
 const {favoritesModel} = require('../models');
 
 /**
@@ -10,8 +11,9 @@ const {favoritesModel} = require('../models');
  * @param {*} res 
  */
 const getItems = async (req,res) => {
-    const data = await favoritesModel.find({});
+    const data = await favoritesModel.find();
     res.send({data});
+    
 };
 
 /**

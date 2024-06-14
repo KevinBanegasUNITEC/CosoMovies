@@ -9,6 +9,7 @@ const nowPlaying = require('./utils/nowPlaying'); //works
 const genres = require('./utils/genres'); //works
 const popular = require('./utils/popular'); //works
 const search = require('./utils/searchMovie'); //works
+const searchById = require('./utils/searchById'); //works
 const app = express();
 
 app.use(cors());
@@ -25,4 +26,4 @@ app.listen(port, ()=> {
 
 dbconnect();
 
-upcoming(1);
+searchById(25);
