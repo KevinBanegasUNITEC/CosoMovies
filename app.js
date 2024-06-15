@@ -3,8 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const dbconnect = require('./config/mongo');
 const app = express();
-const getMoviesByGenre = require('./utils/moviesByGenre');
-const getGenres = require('./utils/genres');  
+const findTrailers = require('./utils/getTrailers');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
