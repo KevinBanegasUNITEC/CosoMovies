@@ -19,5 +19,3 @@ app.listen(port, ()=> {
 });
 
 dbconnect();
-findTrailers(1022789); 
-

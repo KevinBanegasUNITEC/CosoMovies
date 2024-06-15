@@ -7,6 +7,7 @@ const search = require('../utils/searchMovie');
 const searchID = require('../utils/searchById');
 const { favoritesModel } = require('../models');
 const getactors = require('../utils/getActors');
+const getByGenre = require('../utils/moviesByGenre');
 
 const getGenres = async (req,res) => {
     try {
@@ -16,6 +17,20 @@ const getGenres = async (req,res) => {
         console.error('Error fetching genres:', error);
         res.status(500).send({ error: "Internal Server Error" });
     }
+}
+
+const getMoviesByGenre = async (req, res) => {
+    if (!req.params.id)
+        return res.status(400).send({ error: "Invalid data" });
+    try {
+        const movies = await getByGenre(req.params.id);
+        const data = await getData(movies.results);
+        res.status(200).send(data);        
+    } catch (error) {
+        console.error('Error fetching movies by genre:', error);
+        res.status(500).send({ error: "Error fetching movies by genre" });
+    }
+
 }
 
 const getNowPlaying = async (req,res) => {
@@ -143,5 +158,6 @@ module.exports = {
     getTopRated,
     getUpcoming,
     getSearchMovie,
-    getSearchMovieByID
+    getSearchMovieByID,
+    getMoviesByGenre
 };
