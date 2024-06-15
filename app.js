@@ -20,5 +20,3 @@ app.listen(port, ()=> {
 });
 
 dbconnect();
-getGenres();
-getMoviesByGenre(12);
