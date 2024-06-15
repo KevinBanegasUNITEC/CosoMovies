@@ -8,6 +8,7 @@ const searchID = require('../utils/searchById');
 const { favoritesModel } = require('../models');
 const getactors = require('../utils/getActors');
 const getByGenre = require('../utils/moviesByGenre');
+const trailer = require('../utils/getTrailers');
 
 const getGenres = async (req,res) => {
     try {
@@ -142,7 +143,8 @@ const getSearchMovieByID = async (req, res) => {
             country: movie.origin_country,
             score: Math.floor(movie.vote_average * 10),
             favorite: movie.favorite,
-            actors: actors
+            actors: actors,
+            trailer_path: await trailer(movie.id)
         };
         res.status(200).send(data);
     } catch (error) {
