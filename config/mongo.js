@@ -10,6 +10,7 @@ const dbConnection = () => {
     mongoose.connect(DB_URI).catch((error) => {
         console.log('Error connecting to the database');
         console.log(error);
+        process.exit(1);
     });
     if (mongoose.connection.readyState === 2) {
         console.log('Connected to the database');

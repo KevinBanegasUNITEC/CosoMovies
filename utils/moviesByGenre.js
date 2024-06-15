@@ -4,13 +4,13 @@ require('dotenv').config();
 const API_TOKEN = process.env.API_TOKEN;
 
 /**
- * @description Trae las peliculas populares
+ * @description Trae las peliculas mejor valoradas
  * @param {*} page 
  * @returns 
  */
-async function popularMovies (page) {
+async function getMoviesByGenre(genreId){
     let data;
-    await axios.get(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=${page}&api_key=${API_TOKEN}`)
+    await axios.get(`https://api.themoviedb.org/3/discover/movie?language=en-US&api_key=${API_TOKEN}&with_genres=${genreId}&page=1`)
         .then(response => {
             //console.log(response.data);
             data = response.data;
@@ -19,6 +19,6 @@ async function popularMovies (page) {
             console.error(error);
         });
     return data;
-}
+};
 
-module.exports = popularMovies;
+module.exports = getMoviesByGenre;

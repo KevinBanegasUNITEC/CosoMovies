@@ -3,8 +3,8 @@ const express = require('express');
 const cors = require('cors');
 const dbconnect = require('./config/mongo');
 const app = express();
-const movie = require('./utils/searchMovieByID')
-
+const getMoviesByGenre = require('./utils/moviesByGenre');
+const getGenres = require('./utils/genres');  
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -20,3 +20,5 @@ app.listen(port, ()=> {
 });
 
 dbconnect();
+getGenres();
+getMoviesByGenre(12);

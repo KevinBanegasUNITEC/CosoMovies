@@ -1,6 +1,6 @@
-const express = require('express');
-const router = express.Router();
-const { getItems, createItem } = require('../controllers/favorites');
+
+const router = require('express').Router();
+const { getItems, postItem, deleteItem } = require('../controllers/favorites');
 
 /**
  * @description Rutas de Favorites, se encarga de manejar las peticiones a la base de datos
@@ -8,6 +8,8 @@ const { getItems, createItem } = require('../controllers/favorites');
 
 router.get('/',getItems);
 
-router.post('/',createItem);
+router.post('/',postItem);
+
+router.delete('/',deleteItem);
 
 module.exports = router;
