@@ -106,4 +106,31 @@ const deleteItem = (req,res) => {
  */
 const updateItem = (req,res) => {};
 
-module.exports = {getItems, postItem, deleteItem, updateItem};
+/**
+ * @description agrega un usuario
+ * @param {*} req 
+ * @param {*} res 
+ */
+
+const addUser = (req,res) => {
+    if (!req.body.user) {
+        return res.status(400).send({ error: "User is required" });
+    }
+    if(!Array.isArray(req.body.favorites)){
+        return res.status(400).send({ error: "Favorites is required" });
+    }
+    const user = req.body.user;
+    const favorites = req.body.favorites;
+    //agregar un usuario a la base de datos
+    const newUser = new favoritesModel({ user, favorites });
+    newUser.save()
+        .then(data => {
+            res.status(201).send(`User ${user} added successfully`);
+        })
+        .catch(error => {
+            console.error('Error adding user:', error);
+            res.status(500).send({ error: "Error adding user" });
+        });
+};
+
+module.exports = {getItems, postItem, deleteItem, updateItem, addUser};

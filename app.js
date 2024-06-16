@@ -4,6 +4,7 @@ const cors = require('cors');
 const dbconnect = require('./config/mongo');
 const app = express();
 const findTrailers = require('./utils/getTrailers');
+const connectFirebase = require('./config/firebase');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -19,3 +20,4 @@ app.listen(port, ()=> {
 });
 
 dbconnect();
+connectFirebase();
