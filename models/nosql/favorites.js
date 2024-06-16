@@ -10,6 +10,9 @@ const favoritesSchema = new mongoose.Schema(
     },
     { 
         versionKey: false 
+    },
+    {
+        collection: 'CosoMoviesDB'
     }
 );
 

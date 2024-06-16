@@ -4,7 +4,7 @@ require('dotenv').config();
 const API_TOKEN = process.env.API_TOKEN;
 
 /**
- * @description Trae las peliculas mejor valoradas
+ * @description Trae los actores de una película
  * @param {*} page 
  * @returns 
  */
