@@ -30,6 +30,7 @@ ____________________________________________
 ____________________________________________
 
 
+
 # Utils
 
 `Todos en esta lista son funciones de tipo GET`
@@ -68,3 +69,24 @@ __________________________________________________
 
 ### Lista NowPlaying:
     /api/utils/nowplaying
+
+# Login
+
+## Sign Up (Registrar usuarios)
+   `Funcion tipo post`
+     /api/login/signup
+### Parametros de body;
+
+   - body.**`email`**: El usuario que debe llevar el siguiente formato xxxxx@xxxxx.com
+   - body.**`password`**: La contraseña debe tener mas de 5 caracteres
+
+## SignIn (Iniciar Sesion)
+`Funcion tipo post`
+### Parametros de body;
+    - body.**`email`**: El usuario que debe llevar el siguiente formato xxxxx@xxxxx.com
+   - body.**`password`**: La contraseña debe tener mas de 5 caracteres
+
+## LogOut (Cerrar sesion)
+`Funcion tipo post`
+
+
