@@ -16,7 +16,7 @@ const signUp = async (req, res) => {
         //Mandar el UID a la base de datos
         const favorites = [];
         await axios.post('https://api.cosomovies.xyz/api/favorites/addUser', {
-            user: user.user.uid,
+            user: email,
             favorites
         });
         res.status(200).json("User created: " + email);
